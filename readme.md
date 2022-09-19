@@ -48,7 +48,7 @@ You can either use the container provided pgAdmin or another App.
 
 ### Locally:
 
-- After [running](#running) go to http://localhost:5050/
+- Go to http://localhost:5050/
 
 ```text
 Email: admin@admin.com
@@ -91,6 +91,10 @@ The query performed inside the app is:
 INSERT INTO public.operationallyavailablecapacitytw(id, loc, loc_zn, loc_name, loc_purp_desc, loc_qti, flow_ind, dc, opc, tsq, oac, it, auth_overrun_ind, nom_cap_exceed_ind, all_qty_avail, qty_reason)
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 ```
+
+## Observation
+
+All fields that have a value filled in quantity reason are being ignored and stored in `validatedData.invalid` at `Program.cs`.
 
 
 ## License
