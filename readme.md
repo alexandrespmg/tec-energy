@@ -17,15 +17,13 @@ It is recommended to install docker to use the docker compose for all local depe
 
 ## 🐳 Running
 
-[//]: # (This solution rely on docker compose to up our PostgresSQL instance, to run the migration )
-
 Type on the root of this repository:
 
 ```shell
 docker compose up --build
 ```
 
-That's is it! It will up our PostgresSQL instance, run the migration and start the application.
+That's it! It will up our PostgresSQL instance, run the migration and start the application.
 
 ## 📁 Project structure
 
@@ -36,16 +34,16 @@ That's is it! It will up our PostgresSQL instance, run the migration and start t
     ├── DownloadCsvOverHttp      # .NET Console Application (Open this in your IDE if you wanna code)
     │   ├── models               # Models and Enums
     │   ├── repository           # Request to DB and Insertion Query
-    │   ├── services             # Service to Download the csv
+    │   ├── services             # Service to Download the CSV
     │   ├── DockerFile           # File to create our .NET container
-    │   └── Program.cs           # Web App to call others services
+    │   └── Program.cs           # Web App to call other services
     ├── .env                     # Environment variables
     └── docker-compose.yml       # Setup the local infrastructure
 
 
 ## Connecting to Database
 
-You can either use the locally adminer or another App.
+You can either use the container provided pgAdmin or another App.
 
 
 ### Locally:
@@ -64,7 +62,7 @@ Password: root
 ```text
 Host: db
 Port: 5432
-UserName: postgres
+Username: postgres
 Password: postgres
 ```
 
@@ -77,7 +75,7 @@ For connections outside the container, use this:
 ```text
 Host: localhost
 Port: 5432
-UserName: postgres
+Username: postgres
 Password: postgres
 Database: localdb
 ```
