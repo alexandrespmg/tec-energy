@@ -11,8 +11,8 @@ public static class Validator
 
         var validation = new Validated<OperationallyAvailableCapacityTw>
         {
-            valid = valid,
-            invalid = invalid
+            Valid = valid,
+            Invalid = invalid
         };
 
         return validation;

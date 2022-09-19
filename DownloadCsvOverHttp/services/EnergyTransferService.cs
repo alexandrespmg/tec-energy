@@ -9,7 +9,7 @@ public class EnergyTransferService
     private readonly HttpClient _client = new();
     private readonly string _baseUri = "https://twtransfer.energytransfer.com/ipost/capacity/operationally-available";
 
-    public Uri GetUri(DateTime date)
+    private Uri GetUri(DateTime date)
     {
         var uriBuilder = new UriBuilder(_baseUri);
 
@@ -19,21 +19,20 @@ public class EnergyTransferService
         return uriBuilder.Uri;
     }
 
-    public async Task<List<OperationallyAvailableCapacityTw>> GetOperationallyAvailableCapacity(Uri uri)
+    private async Task<List<OperationallyAvailableCapacityTw>> GetOperationallyAvailableCapacity(Uri uri)
     {
         Console.WriteLine($"EnergyTransferService | Starting download... URL: {uri}");
 
         var streamTask = await _client.GetStreamAsync(uri);
 
-        using (var reader = new StreamReader(streamTask))
-        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-        {
-            var records = csv.GetRecords<OperationallyAvailableCapacityTw>();
+        using var reader = new StreamReader(streamTask);
+        using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
-            Console.WriteLine("EnergyTransferService | Download finished...");
+        var records = csv.GetRecords<OperationallyAvailableCapacityTw>();
 
-            return records.ToList();
-        }
+        Console.WriteLine("EnergyTransferService | Download finished...");
+
+        return records.ToList();
     }
 
     public async Task<List<OperationallyAvailableCapacityTw>> GetOperationallyAvailableCapacityFromDateRange(DateTime initialRange, DateTime finalRange)

@@ -12,6 +12,6 @@ var validatedData = Validator.Validate(operationallyAvailableCapacity);
 
 var repository = new OperationallyAvailableCapacityRepository();
 
-await repository.Save(validatedData.valid);
+await repository.Save(validatedData.Valid);
 
 Console.WriteLine("Program | App Finishing...");
