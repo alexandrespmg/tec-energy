@@ -23,7 +23,6 @@ services:
       - FLYWAY_USER=${POSTGRES_USER}
       - FLYWAY_PASSWORD=${POSTGRES_PASSWORD}
       - FLYWAY_URL=jdbc:postgresql://postgres:${POSTGRES_PORT}/${POSTGRES_DB}
-      - FLYWAY_SCHEMAS=flyway
       - FLYWAY_GROUP=true
       - FLYWAY_EDITION=${FLYWAY_EDITION}
     image: flyway/flyway:latest
