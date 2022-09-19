@@ -6,14 +6,16 @@ namespace DownloadCsvOverHttp.repository;
 
 public class OperationallyAvailableCapacityRepository
 {
-
-    private readonly string _connectionUrl= "Host=db;Username=postgres;Password=postgres;Database=localdb";
-
     private readonly NpgsqlConnection _connection;
 
     public OperationallyAvailableCapacityRepository()
     {
-        _connection = new(_connectionUrl);
+        var connectionUrl = $"Host={Environment.GetEnvironmentVariable("PROSTGRES_HOST")};" +
+                            $"Username={Environment.GetEnvironmentVariable("POSTGRES_USER")};" +
+                            $"Password={Environment.GetEnvironmentVariable("POSTGRES_PASSWORD")};" +
+                            $"Database={Environment.GetEnvironmentVariable("POSTGRES_DB")}";
+        Environment.GetEnvironmentVariable("POSTGRES_USER");
+        _connection = new(connectionUrl);
     }
 
     public async Task Save(IEnumerable<OperationallyAvailableCapacityTw> operationallyAvailableCapacityTws)
