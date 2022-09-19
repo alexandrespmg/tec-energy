@@ -25,7 +25,7 @@ docker compose up --build
 
 That's it! It will up our PostgresSQL instance, run the migration and start the application.
 
-Closing:
+`If you do any change to the code` or want to rerun the code, don't forget to stop the containers and volumes before running up again:
 
 ```shell
 docker compose down
