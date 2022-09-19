@@ -7,14 +7,15 @@ namespace DownloadCsvOverHttp.services;
 public class EnergyTransferService
 {
     private readonly HttpClient _client = new();
-    private readonly string _baseUri = "https://twtransfer.energytransfer.com/ipost/capacity/operationally-available";
+    private const string BaseUri = "https://twtransfer.energytransfer.com/ipost/capacity/operationally-available";
 
-    private Uri GetUri(DateTime date)
+    private Uri GetUri(DateTime date, Cycles cycles = Cycles.Final)
     {
-        var uriBuilder = new UriBuilder(_baseUri);
-
-        uriBuilder.Query = $"?gasDay={date.Month.ToString("D2")}%2F{date.Day.ToString("D2")}%2F{date.Year}&cycle={Cycles.Final.GetHashCode()}" +
-                           $"&searchType=NOM&searchString=&locType=ALL&locZone=ALL&f=csv&extension=csv&asset=TW";
+        var uriBuilder = new UriBuilder(BaseUri)
+        {
+            Query = $"?gasDay={date.Month.ToString("D2")}%2F{date.Day.ToString("D2")}%2F{date.Year}&cycle={cycles.GetHashCode()}" +
+                    $"&searchType=NOM&searchString=&locType=ALL&locZone=ALL&f=csv&extension=csv&asset=TW"
+        };
 
         return uriBuilder.Uri;
     }
