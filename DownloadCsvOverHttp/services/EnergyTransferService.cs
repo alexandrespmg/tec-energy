@@ -14,7 +14,7 @@ public class EnergyTransferService
         var uriBuilder = new UriBuilder(_baseUri);
 
         uriBuilder.Query = $"?gasDay={date.Month.ToString("D2")}%2F{date.Day.ToString("D2")}%2F{date.Year}&cycle={Cycles.Final.GetHashCode()}" +
-                           $"&searchType=ALL&searchString=&locType=ALL&locZone=ALL&f=csv&extension=csv&asset=TW";
+                           $"&searchType=NOM&searchString=&locType=ALL&locZone=ALL&f=csv&extension=csv&asset=TW";
 
         return uriBuilder.Uri;
     }
