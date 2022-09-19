@@ -25,6 +25,12 @@ docker compose up --build
 
 That's it! It will up our PostgresSQL instance, run the migration and start the application.
 
+Closing:
+
+```shell
+docker compose down
+```
+
 ## 📁 Project structure
 
     .
