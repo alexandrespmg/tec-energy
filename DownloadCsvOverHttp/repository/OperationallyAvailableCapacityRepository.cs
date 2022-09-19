@@ -18,7 +18,7 @@ public class OperationallyAvailableCapacityRepository
 
     public async Task Save(IEnumerable<OperationallyAvailableCapacityTw> operationallyAvailableCapacityTws)
     {
-        Console.WriteLine("Saving in Database...");
+        Console.WriteLine("OperationallyAvailableCapacityRepository | Saving in Database...");
         await OpenConnection();
 
         foreach (var operationallyAvailableCapacityTw in operationallyAvailableCapacityTws)
@@ -26,7 +26,7 @@ public class OperationallyAvailableCapacityRepository
             await Save(operationallyAvailableCapacityTw);
         }
 
-        Console.WriteLine("Database insertions done...");
+        Console.WriteLine("OperationallyAvailableCapacityRepository | Database insertions done...");
         await CloseConnection();
     }
 

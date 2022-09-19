@@ -21,7 +21,7 @@ public class EnergyTransferService
 
     public async Task<List<OperationallyAvailableCapacityTw>> GetOperationallyAvailableCapacity(Uri uri)
     {
-        Console.WriteLine($"Starting download... URL: {uri}");
+        Console.WriteLine($"EnergyTransferService | Starting download... URL: {uri}");
 
         var streamTask = await _client.GetStreamAsync(uri);
 
@@ -30,7 +30,7 @@ public class EnergyTransferService
         {
             var records = csv.GetRecords<OperationallyAvailableCapacityTw>();
 
-            Console.WriteLine("Download finished...");
+            Console.WriteLine("EnergyTransferService | Download finished...");
 
             return records.ToList();
         }

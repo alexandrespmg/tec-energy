@@ -1,7 +1,7 @@
 ﻿using DownloadCsvOverHttp.repository;
 using DownloadCsvOverHttp.services;
 
-Console.WriteLine("Starting App...");
+Console.WriteLine("Program | Starting App...");
 
 var energyTransferService = new EnergyTransferService();
 
@@ -14,4 +14,4 @@ var repository = new OperationallyAvailableCapacityRepository();
 
 await repository.Save(validatedData.valid);
 
-Console.WriteLine("App Finishing...");
+Console.WriteLine("Program | App Finishing...");
